@@ -1,8 +1,8 @@
 /*  Conceptos basicos de JS 
 
-- Var, let y const
-- Arrow functions
-- Template literals
+- Var, let y const      No más var, let para variables y const para constantes
+- Arrow functions,      No más uso de function; =>
+- Template literals     
 
 */
 const variables = () =>
@@ -34,21 +34,21 @@ function sumarOld(a, b){
     return a+b;
 }
 
-console.log(sumarOld(5, 3));
+//console.log(sumarOld(5, 3));
 
 //  Arrow Functions
 const sumarNew = (a, b) => {
     return a+b
 }
 
-console.log(sumarNew(10, 2));
+// console.log(sumarNew(10, 2));
 
 
 const sumarPro = (a, b) => a+b
 
-console.log(sumarPro(10, 2));
+//console.log(sumarPro(10, 2));
 
-variables()
+//variables()
 
 
 
@@ -60,26 +60,55 @@ const producto = "Laptop";
 const precio = 800;
 
 // Antiguo (Feo)
-console.log("El producto " + producto + " cuesta $" + precio);
+// console.log("El producto " + producto + " cuesta $" + precio);
 
-// Moderno (Limpio)
-console.log(`El producto ${producto} cuesta $${precio}`);
+// // Moderno (Limpio)
+// console.log(`El producto ${producto} cuesta $${precio}`);
+
+FName = "Omar"
+MName = "Perez"
+LName = "Franco"
+
+// console.log(`Nombre completo: ${FName} ${MName} ${LName}`);
 
 
 // 🔥 TU MISIÓN DE HOY (Para completar antes de las 7:30 AM)
-// Vas a combinar todo en un script que simule un Sistema de Calificaciones. No copies y pegues; escribe el código tú mismo para generar memoria muscular.
+// Vas a combinar todo en un script que simule un Sistema de Calificaciones. 
+// No copies y pegues; escribe el código tú mismo para generar memoria muscular.
 
 // Requerimientos del Script:
 
 // Declara una constante const con el nombre de un alumno.
 
+const name = "Omar Perez"
+
 // Declara una lista de notas usando un Array: const notas = [8, 9, 10, 6];.
 
+const notas = [8, 9, 4, 5, 8.8]
+
 // Crea una Arrow Function que reciba una lista de notas y calcule el promedio.
+// Tambien se puede usar el método .reduce()
 
-// Pista: Usa un bucle for...of (investígalo rápido si no lo recuerdas) o el método .reduce() si te sientes valiente.
 
-// Crea una variable let para guardar el promedio calculado.
+const sacarPromedio = (calificaciones) => {
+    let suma = 0
+
+    for (calificacion of calificaciones){
+        suma += calificacion
+    }
+
+    let promedio = 0
+    promedio = suma / calificaciones.length
+    return promedio
+}
+
+const promedio = sacarPromedio(notas)
+const aprobadoONo = promedio >= 7 ? "Aprobado" : "Reprobado"
+console.log(`EL alumno esta ${aprobadoONo}`);
+
+console.log(`El promedio resultante del alumno es:`, sacarPromedio(notas));
+
+
 
 // Usa un if para determinar si aprobó (mayor a 7) o reprobó.
 
