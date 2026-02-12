@@ -105,9 +105,10 @@ const sacarPromedio = (calificaciones) => {
 const promedio = sacarPromedio(notas)
 const aprobadoONo = promedio >= 7 ? "Aprobado" : "Reprobado"
 console.log(`EL alumno esta ${aprobadoONo}`);
+console.log(typeof(promedio));
 
-console.log(`El promedio resultante del alumno es:`, sacarPromedio(notas));
-
+console.log(`El promedio resultante del alumno es: ${promedio.toFixed(2)}`);
+console.log(typeof(promedio));
 
 
 // Usa un if para determinar si aprobó (mayor a 7) o reprobó.
