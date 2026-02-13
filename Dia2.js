@@ -13,13 +13,30 @@
 
 // Declarar la data: Crea un array de objetos con productos. Usa const.
 
-const Diccionario = {
-    
-}
+const listaSuper = [
+    {id : 1, nombre : "Leche", marca : "19 hermanos", precio : 50},
+    {id : 1, nombre : "Huevos", marca : null, precio : 100},
+    {id : 1, nombre : "Jamon", marca : "Chaparral", precio : 45},
+    {id : 1, nombre : "Pan", marca : "Alteña", precio : 75},
+    {id : 1, nombre : "Jugo", marca : "Jumex", precio : 20}
+]
 
 // Filtrar: Usa .filter() para sacar solo los productos que cuesten menos de 500 dólares (tu presupuesto barato).
+let preciosCaros = listaSuper.filter(producto => producto.precio >= 50)
+console.log(preciosCaros);
 
 // Transformar (Map): Usa .map() para crear una lista simple que solo tenga los nombres de los productos (strings), 
 // no los objetos completos.
 
+let nombres = listaSuper.map(producto => producto.nombre)
+console.table(nombres);
+
 // Buscar (Find): Usa .find() para encontrar el objeto que tenga el id: 3.
+let id1 = listaSuper.find(producto => {
+    return producto.id === 1})
+
+console.log(id1.nombre);
+
+const nombre = id1 ? id1.nombre : undefined;
+
+console.log(nombre);
