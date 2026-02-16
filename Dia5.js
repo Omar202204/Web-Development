@@ -5,19 +5,11 @@
 
 // La forma pura (Pro): Usar document.createElement().
 
-// Hoy usaremos la forma rápida para que veas resultados inmediatos antes de que empiece tu día con tu novia y tareas.
-
 // 2. El Código (Hands-on)
 // Abre tu carpeta. Necesitas dos archivos limpios: index.html y Dia5.js.
 
-
-/* Paso B: La Magia (JS)
-Aquí viene la lógica. Lee los comentarios, ahí está la explicación.
-
-JavaScript
-// Dia5.js
-
 // 1. SELECCIONAR: Traemos los 3 elementos del HTML
+
 const input = document.querySelector('#inputTarea');
 const boton = document.querySelector('#btnAgregar');
 const lista = document.querySelector('#listaTareas');
@@ -43,19 +35,12 @@ const agregarTarea = () => {
 };
 
 
-/* 
 // 3. EL EVENTO: Escuchar el click
 boton.addEventListener('click', agregarTarea);
+
+
+/*
 3. Ejecutar y Analizar
-Abre el index.html en Chrome.
-
-Escribe "Aprender TypeScript".
-
-Dale click al botón.
-
-Escribe "Besar a mi novia".
-
-Dale click al botón.
 
 Lo que acaba de pasar:
 Tu código JS tomó un texto, lo envolvió en etiquetas HTML (<li>...</li>) y lo inyectó en la página sin recargarla.
