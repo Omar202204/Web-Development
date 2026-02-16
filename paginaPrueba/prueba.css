@@ -1,0 +1,15 @@
+/* CSS funciona por prioridad.
+
+De menor a mayor fuerza:
+
+1. Selector universal *
+
+2. Etiqueta
+
+3. Clase
+
+4. ID
+
+5. Inline style (style="") 
+*/
+
