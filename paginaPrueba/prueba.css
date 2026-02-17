@@ -11,5 +11,16 @@ De menor a mayor fuerza:
 4. ID
 
 5. Inline style (style="") 
+
+Cada elemento HTML es una caja invisible.
+
+Esa caja tiene:
+
+[ margin ]
+   [ border ]
+      [ padding ]
+         contenido
+
+
 */
 
