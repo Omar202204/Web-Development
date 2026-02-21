@@ -1,3 +1,5 @@
+// Manipulación básica de DOM
+
 const boton = document.querySelector('#miBoton');
 
 boton.addEventListener('click', () => {
@@ -26,20 +28,3 @@ titulo.addEventListener("click", () => {
     titulo.style.color = "blue"
     titulo.textContent = "JS implementado - Cambio de look"
 })
-
-// // 1. SELECCIONAR (Atrapar los elementos)
-// const titulo = document.querySelector('#titulo');
-// const boton = document.querySelector('#btn-magico');
-
-// // 2. ESCUCHAR (El evento)
-// boton.addEventListener('click', () => {
-//     // 3. MANIPULAR (Cambiar cosas)
-//     console.log("¡Click detectado!");
-
-//     // Cambiar el texto
-//     titulo.textContent = "¡Javascript Moderno Activado!";
-
-//     // Cambiar el estilo (CSS desde JS)
-//     titulo.style.color = "blue";
-//     document.body.style.backgroundColor = "#f0f0f0";
-// });
