@@ -1,7 +1,7 @@
 // 1. El Concepto: innerHTML vs createElement
 // Para poner cosas en la pantalla dinámicamente, tienes dos caminos:
 
-// La forma rápida (Hack): Usar innerHTML para inyectar texto HTML como si fuera un string.
+// La forma rápida: Usar innerHTML para inyectar texto HTML como si fuera un string.
 
 // La forma pura (Pro): Usar document.createElement().
 
@@ -11,10 +11,11 @@
 // 1. SELECCIONAR: Traemos los 3 elementos del HTML
 
 const input = document.querySelector('#inputTarea');
-const boton = document.querySelector('#btnAgregar');
+const botonAgregar = document.querySelector('#btnAgregar');
 const lista = document.querySelector('#listaTareas');
+const botonBorrar = document.querySelector("#btnBorrar")
 
-// 2. LA FUNCIÓN: ¿Qué pasa cuando agrego? */
+// 2. LA FUNCIÓN: ¿Qué pasa cuando agrego?
 
 const agregarTarea = () => {
     // a. Obtener lo que escribió el usuario (.value)
@@ -26,18 +27,30 @@ const agregarTarea = () => {
         return; 
     }
 
-    // b. Crear el HTML nuevo usando Template Literals (``)
+    // b. Crear el HTML nuevo usando innerHTML y Template Literals (``)
     // El += significa "agrega esto a lo que ya había antes"
-    lista.innerHTML += `<li>${texto} ✅</li>`;
+    // lista.innerHTML += `<li>${texto} ✅</li>`;
+
+    // Ahora crearemos el HTML nuevo con document.createElement
+    // 1 Crear el "cascaron" vacio
+    const nuevaTarea = document.createElement("li")
+    // 2 Inyectar el contenido
+    nuevaTarea.textContent = `${texto}`;
+    // 3 appendChild
+    lista.appendChild(nuevaTarea)
 
     // c. Limpiar el input para escribir otra cosa
     input.value = "";
 };
 
+const borrarTarea = () => {
+    lista.remove()
+}
+
 
 // 3. EL EVENTO: Escuchar el click
-boton.addEventListener('click', agregarTarea);
-
+botonAgregar.addEventListener("click", agregarTarea);
+botonBorrar.addEventListener("click", borrarTarea)
 
 /*
 3. Ejecutar y Analizar
