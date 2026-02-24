@@ -9,8 +9,12 @@ interface OrdenTrading{
     esCompra : boolean
 }
 
+interface OrdenLimitada extends OrdenTrading{
+    precioLimite?: number // Porpiedad ocional en el 
+}
 
-// 2. Creamos una orden usando la interfaz
+
+// Creamos una orden usando la interfaz
 const miOrden: OrdenTrading = {
     simbolo: "AAPL",
     precio: 150,
@@ -18,4 +22,13 @@ const miOrden: OrdenTrading = {
     esCompra: true
 };
 
+const miOrdenLimitado: OrdenLimitada = {
+    simbolo: "EEPL",
+    precio : 123,
+    cantidad : 1,
+    esCompra : true,
+}
+
 console.log(miOrden);
+
+

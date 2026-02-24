@@ -11,6 +11,7 @@
 
 // Rejected (Rechazada): Algo falló
 
+//      Esto es una instancia de la clase Promise
 const usuarioAutenticado = new Promise((resolve, rejected) => {
     const auth = true
 
