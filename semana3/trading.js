@@ -10,6 +10,12 @@ var miOrdenLimitado = {
     simbolo: "EEPL",
     precio: 123,
     cantidad: 1,
-    esCompra: true,
+    esCompra: true, //Obligatoriamente un objeto debe llevar todas las propiedades decalardas en la interfaz
 };
+// Funcion con validacion de tipo entrante justo debajo: 
+var procesarOrden = function (orden) {
+    console.log("Procesando la compre de ".concat(orden.simbolo));
+    return true;
+};
+procesarOrden(miOrden);
 console.log(miOrden);

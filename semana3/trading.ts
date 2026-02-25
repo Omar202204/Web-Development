@@ -6,28 +6,41 @@ interface OrdenTrading{
     simbolo : string
     precio : number
     cantidad : number
-    esCompra : boolean
+    tipoAccion: "COMPRA" | "VENTA"
 }
 
+// Una extension de una interfaz jala las propiedades de una a otra
 interface OrdenLimitada extends OrdenTrading{
-    precioLimite?: number // Porpiedad ocional en el 
+    precioLimite?: number // Propiedad ocional
 }
 
 
-// Creamos una orden usando la interfaz
+
+// Creamos una orden usando la interfaz (Un objeto de interfaz)
 const miOrden: OrdenTrading = {
     simbolo: "AAPL",
     precio: 150,
     cantidad: 12,
-    esCompra: true
+    tipoAccion: "HOLA"
+
 };
 
+// Objeto de interfaz
 const miOrdenLimitado: OrdenLimitada = {
     simbolo: "EEPL",
     precio : 123,
     cantidad : 1,
-    esCompra : true,
+    esCompra : true,     //Obligatoriamente un objeto debe llevar todas las propiedades decalardas en la interfaz
 }
+
+// Funcion con validacion de tipo entrante justo debajo: 
+const procesarOrden = (orden: OrdenTrading): boolean => {       // Solo recibe tipos "OrdenTrading" y salen booleans
+    console.log(`Procesando la compre de ${orden.simbolo}`);        // 
+    return true;
+}
+
+procesarOrden(miOrden)
+
 
 console.log(miOrden);
 

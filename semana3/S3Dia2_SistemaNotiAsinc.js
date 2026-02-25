@@ -1,33 +1,22 @@
 // Mini-Proyecto: Sistema de Notificaciones Asíncronas
 
-// Vas a construir un sistema que:
-// Cree notificaciones (objetos)
-// Use una clase
-// Cree instancias
-// Use métodos
-// Use promesas
-// Simule asincronía
-// Maneje estados
-// Use composición en vez de herencia innecesaria
-
-// Las notificaciones sean instancias
-
-// Se simule un envío asíncrono con Promise
-
-// Cada notificación tenga estado: pendiente | enviada | error
+// Creacion de notificaciones (objetos)
+// Clases
+// Instancias
+// Métodos
+// Promesas
+// Asincronía
+// Manejo de estados
 
 //Sintaxis de un objeto:
 // const notificacion = {
-//     id: "1",
+//     id: 1, ....
 // }
 
-
-const esperar = (ms) =>
-    new Promise((resolve) => {
-        setTimeout(() => {
-        resolve()
-    }, ms)
-})
+//Sintaxis de un objeto de clase:
+// const notificacion = new Notificacion {
+//     1, ....
+// }
 
 class Notificacion{
     constructor(id, titulo, mensaje, prioridad, estado){
@@ -39,11 +28,11 @@ class Notificacion{
     }
 
     marcarComoEnviada(){
-        console.log("Enviada");
+        this.estado = "Estado: Enviada"
     }
 
     marcarComoError(){
-        console.log("Esto es un error");
+        this.estado = "Estado: Error"
     }
 }
 
@@ -51,23 +40,46 @@ class SistemaDeNotificaciones{
     // Declaracion de array privado
     #arrayNotificaciones = [];
 
+    // Metodo
     crearNotificacion(titulo, mensaje, prioridad){
 
     }
 
+    // Metodo
     enviarNotificacion(notificacion){
-        const esperador = async (ms) => {
-            await esperar(1000)
-            console.log(`Notificacion enviada: ${notificacion}`);
-        }
+        return new Promise((resolve, reject) => {           // devuelve una promesa, esta promesa se devuelve inmediatamente con "pending"
+
+            setTimeout(() => {                              // simula un retraso con setTimeout, y despues de 1 seg. entra al if
+                if(notificacion.prioridad === "alta"){
+                    resolve("Funciona despues de 1 segundo")
+                }                                           // Dependiendo el if al que entra la promesa cambia a resolve/reject
+                if(notificacion.prioridad === "media"){
+                    resolve("Funciona despues de 1 segundo")
+                }
+                if(notificacion.prioridad === "baja"){
+                    reject("No funciona despues de 1 segundo")
+                }
+            }, 1000);
+        })
     }
     
-
+    //Metodo
     mostrarTodas(){
 
     }
-
 }
 
 const notificacion = new SistemaDeNotificaciones
-notificacion.enviarNotificacion("Hola Mundo")  
+const notificacionA = new Notificacion(12, "hola", "como estas", "media", "activo")
+
+notificacion.enviarNotificacion(notificacionA)
+    .then((mensaje) => {
+        notificacionA.marcarComoEnviada()
+        console.log("Exito:", mensaje)
+        console.log(`Estado final de notificacion: `, notificacionA);
+    })
+    .catch((error) => {
+        notificacionA.marcarComoError()
+        console.log("Error:", error);
+    })
+
