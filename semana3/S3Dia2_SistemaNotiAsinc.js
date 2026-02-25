@@ -9,29 +9,14 @@
 // Manejo de estados
 
 //Sintaxis de un objeto:
-
 // const notificacion = {
 //     id: 1, ....
 // }
 
 //Sintaxis de un objeto de clase:
-
 // const notificacion = new Notificacion {
 //     1, ....
 // }
-
-
-// PARTE 4 — Integración
-
-// Cuando crees una notificación:
-
-// Se agrega al array
-
-// Se intenta enviar automáticamente
-
-// Si se resuelve → estado cambia a "enviada"
-
-// Si falla → estado cambia a "error"
 
 class Notificacion{
     constructor(id, titulo, mensaje, prioridad, estado){
@@ -39,7 +24,7 @@ class Notificacion{
         this.titulo = titulo
         this.mensaje = mensaje
         this.prioridad = prioridad
-        this.estado = "pendiente"
+        this.estado = estado
     }
 
     marcarComoEnviada(){
@@ -57,12 +42,7 @@ class SistemaDeNotificaciones{
 
     // Metodo
     crearNotificacion(titulo, mensaje, prioridad){
-        const nuevaNotificacion = new Notificacion{ // Aqui usamos el constructor para crear nuestra notificaciones
-            id, 
-            titulo,
-            mensaje,
-            prioridad
-        }            
+
     }
 
     // Metodo
