@@ -20,19 +20,6 @@
 //     1, ....
 // }
 
-
-// PARTE 4 — Integración
-
-// Cuando crees una notificación:
-
-// Se agrega al array
-
-// Se intenta enviar automáticamente
-
-// Si se resuelve → estado cambia a "enviada"
-
-// Si falla → estado cambia a "error"
-
 class Notificacion{
     constructor(id, titulo, mensaje, prioridad, estado){
         this.id = id
@@ -57,12 +44,25 @@ class SistemaDeNotificaciones{
 
     // Metodo
     crearNotificacion(titulo, mensaje, prioridad){
-        const nuevaNotificacion = new Notificacion{ // Aqui usamos el constructor para crear nuestra notificaciones
+        const id = Date.now()
+
+        // Nueva instancia de creacion de notificaciones
+        const nuevaNotificacion = new Notificacion( // Aqui usamos el constructor para crear nuestra notificaciones
             id, 
             titulo,
             mensaje,
             prioridad
-        }            
+        )     
+        // Agregamos la nueva instancia de notificacion al array
+        this.#arrayNotificaciones.push(nuevaNotificacion)
+
+        this.enviarNotificacion(nuevaNotificacion)
+            .then(() => {
+                nuevaNotificacion.marcarComoEnviada()
+            })
+            .catch(() => {
+                nuevaNotificacion.marcarComoError()
+            })
     }
 
     // Metodo
@@ -85,21 +85,30 @@ class SistemaDeNotificaciones{
     
     //Metodo
     mostrarTodas(){
-
+        console.log(this.#arrayNotificaciones);     //Intentar sin el this
     }
 }
 
 const notificacion = new SistemaDeNotificaciones
 const notificacionA = new Notificacion(12, "hola", "como estas", "media", "activo")
 
-notificacion.enviarNotificacion(notificacionA)
-    .then((mensaje) => {
-        notificacionA.marcarComoEnviada()
-        console.log("Exito:", mensaje)
-        console.log(`Estado final de notificacion: `, notificacionA);
-    })
-    .catch((error) => {
-        notificacionA.marcarComoError()
-        console.log("Error:", error);
-    })
+notificacion.crearNotificacion("Pago", "Todo bien", "alta")
+notificacion.crearNotificacion("Bienvenida", "Este es un mensaje de bienvenida", "baja")
+
+setTimeout(() => {
+  notificacion.mostrarTodas()  
+}, 2000);
+
+
+
+// notificacion.enviarNotificacion(notificacionA)
+//     .then((mensaje) => {
+//         notificacionA.marcarComoEnviada()
+//         console.log("Exito:", mensaje)
+//         console.log(`Estado final de notificacion: `, notificacionA);
+//     })
+//     .catch((error) => {
+//         notificacionA.marcarComoError()
+//         console.log("Error:", error);
+//     })
 
