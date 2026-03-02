@@ -5,13 +5,7 @@
 // 3- .find(): Busca un solo elemento (el primero que coincida) y te lo entrega. (Ej: Encontrar al usuario con ID 55).
 
 
-
-// "El Inventario de Hardware" 
-
-// Instrucciones: Crea un archivo Dia2.js y escribe este código (no copies/pegues, 
-// teclealo para memorizar la sintaxis):
-
-// Declarar la data: Crea un array de objetos con productos. Usa const.
+// Array de objetos con productos
 
 const listaSuper = [
     {id : 1, nombre : "Leche", marca : "19 hermanos", precio : 50},
@@ -31,7 +25,7 @@ console.log(preciosCaros);
 let nombres = listaSuper.map(producto => producto.nombre)
 console.table(nombres);
 
-// Buscar (Find): Usa .find() para encontrar el objeto que tenga el id: 3.
+// Buscar (Find)
 let id1 = listaSuper.find(producto => {
     return producto.id === 1})
 
@@ -40,3 +34,31 @@ console.log(id1.nombre);
 const nombre = id1 ? id1.nombre : undefined;
 
 console.log(nombre);
+
+
+const numeros = [
+    1, 2, 3, 4, 5
+]
+
+
+const pares = numeros.filter(n => n%2==0)
+console.log(pares);
+
+const triples = numeros.map(n => n*3)
+console.log(triples); 
+
+const suma = numeros.reduce((acumulador, valorActual) =>
+    acumulador + valorActual, 0)    // definimos que empieza desde cero
+
+console.log(suma);
+
+let sumaFor= 0;
+
+for (let index = 0; index < numeros.length; index++) {
+    sumaFor += numeros[index]
+    console.log(`SumaFor va en: ${sumaFor}`);   
+}
+
+console.log(numeros.length);
+
+console.log(sumaFor);
