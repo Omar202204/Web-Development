@@ -14,15 +14,17 @@ const nombre = input.value.toLowerCase();
 // Limpiamos el contenedor por si había una búsqueda anterior
 contenedor.innerHTML = "Buscando...";
 
+// Aqui manipulamos el DOM usando innerHTML y Template Literals
 try {
     // Aquí usamos la herramienta importada.
     const datos = await buscarPokemon(nombre);
 
-    // Aqui manipulamos el DOM usando innerHTML y Template Literals
+    
     // En este espacio debemos tener en cuenta en donde exactamente están nuestros datos
-    // EN este caso "datos.name" y "datos.sprites.front.default"
+    // En este caso "datos.name" y "datos.sprites.front.default"
+    const nombreMayus = datos.name.toUpperCase()
     contenedor.innerHTML = `
-    <h2>${datos.name}</h2> 
+    <h2>${nombreMayus}</h2> 
     <img src="${datos.sprites.front_default}">
     `;
 
