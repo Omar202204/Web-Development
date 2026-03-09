@@ -67,4 +67,27 @@ const iniciarSistema = async () => {
     }
 };
 
-iniciarSistema()
+
+
+// NUEVA FUNCIÓN ASÍNCRONA Y FUNCION DE ESPERA QUE FALLA EL 50% DE LAS VECES
+const esperar2 = () => new Promise((resolve, reject) => 
+    setTimeout(() => {
+        const numAzar = Math.random()
+        if(numAzar>0.5){
+        resolve("Proceso terminado desde la promesa");
+        } else {
+            reject("Algo saló mal desde la promesa: ")
+        }
+    }, 1500)
+)
+
+const promesa = async () => {
+    try {
+        const mensaje = await esperar2()
+        console.log("La funcion funciona bien: ", mensaje);
+    } catch (error) {
+        console.error("Error inesperado: ", error)
+    }
+}
+
+promesa()
