@@ -53,6 +53,7 @@ class SistemaDeNotificaciones{
             mensaje,
             prioridad
         )     
+
         // Agregamos la nueva instancia de notificacion al array
         this.#arrayNotificaciones.push(nuevaNotificacion)
 
@@ -96,19 +97,23 @@ notificacion.crearNotificacion("Pago", "Todo bien", "alta")
 notificacion.crearNotificacion("Bienvenida", "Este es un mensaje de bienvenida", "baja")
 
 setTimeout(() => {
+  notificacion.enviarNotificacion()
   notificacion.mostrarTodas()  
+  
 }, 2000);
 
 
 
-// notificacion.enviarNotificacion(notificacionA)
-//     .then((mensaje) => {
-//         notificacionA.marcarComoEnviada()
-//         console.log("Exito:", mensaje)
-//         console.log(`Estado final de notificacion: `, notificacionA);
-//     })
-//     .catch((error) => {
-//         notificacionA.marcarComoError()
-//         console.log("Error:", error);
-//     })
+console.log(notificacionA);
+
+notificacion.enviarNotificacion(notificacionA)
+    .then((mensaje) => {
+        notificacionA.marcarComoEnviada()
+        console.log("Exito:", mensaje)
+        console.log(`Estado final de notificacion: `, notificacionA.estado);
+    })
+    .catch((error) => {
+        notificacionA.marcarComoError()
+        console.log("Error:", error);
+    })
 
