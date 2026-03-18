@@ -30,8 +30,6 @@ const funcionPromise = () => {
 
 
 // Funcion con promesa y el uso de async / await
-
-
 const esperar = (ms) => {
     return new Promise((resolve, reject) => {       // Convencion mundial de los parametros resolve, reject
         const auth = false

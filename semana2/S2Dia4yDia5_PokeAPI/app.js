@@ -19,7 +19,6 @@ try {
     // Aquí usamos la herramienta importada.
     const datos = await buscarPokemon(nombre);
 
-    
     // En este espacio debemos tener en cuenta en donde exactamente están nuestros datos
     // En este caso "datos.name" y "datos.sprites.front.default"
     const nombreMayus = datos.name.toUpperCase()
