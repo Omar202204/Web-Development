@@ -1,5 +1,4 @@
-// El verdadero poder de TS son las Interfaces
-// Una interfaz es un "contrato" que obliga a un objeto a tener una estructura exacta.
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -36,56 +35,54 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var _this = this;
-// Creamos una orden usando la interfaz (Un objeto de interfaz)
-var miOrden = {
-    simbolo: "AAPL",
-    precio: 150,
-    cantidad: 12,
-    tipoAccion: "COMPRA"
-    //tipoAccion: "HOLA"  //Error que nos dice que solo COMPRA | VENTA pueden ir aqui
+Object.defineProperty(exports, "__esModule", { value: true });
+// No devuelve nada (void), solo hace tiempo.
+var esperar = function (milisegundos) {
+    // Creamos una nueva promesa. Toda promesa nos da un "botón" llamado 'resolve' 
+    // que debemos presionar cuando queremos avisar que ya terminamos.
+    return new Promise(function (resolve) {
+        // Aqui volvemos a llamar a resolve
+        setTimeout(resolve, milisegundos);
+    });
 };
-// Objeto de interfaz
-var miOrdenLimitado = {
-    simbolo: "EEPL",
-    precio: 123,
-    cantidad: 1, // Obligatoriamente un objeto debe llevar todas las propiedades declaradas en la interfaz
-    tipoAccion: "COMPRA",
-    precioLimite: 5000
-    //esCompra : true,    // PROPIEDAD NO DECLARADA ANTERIORMENTE
-};
-// Funcion con validacion de tipo entrante justo debajo: 
-var procesarOrden = function (orden) {
-    console.log("Procesando la compre de ".concat(orden.simbolo)); // 
-    return true;
-};
-procesarOrden(miOrden);
-console.log(miOrden);
-//              CLASES
-// 1. Definimos la (Clase)
-var BotTrading = /** @class */ (function () {
-    function BotTrading() {
-        // Un arreglo vacio de órdenes:
-        this.historial = []; // Solo acepta objetos que hayan pasado mi interfaz OrdenTrading
-    }
-    // B. El método para guardar información
-    BotTrading.prototype.agregarOrden = function (nuevaOrden) {
-        this.historial.push(nuevaOrden);
-        console.log("Orden guardada. Transacciones totales: ".concat(this.historial.length));
-        console.log(this.historial);
-    };
-    return BotTrading;
-}());
-// 2. Creamos la Instancia real usando "new"
-var miBot = new BotTrading();
-// 3. Usamos el bot
-miBot.agregarOrden(miOrdenLimitado); // Asumiendo que miOrden sigue existiendo arriba
-// Simulamos ir a una API financiera
-var obtenerPrecioMercado = function (simbolo) { return __awaiter(_this, void 0, void 0, function () {
+// (ARREGLO TIPADO)
+// Solo permite guardar objetos del tipo 'Criptomoneda'
+var portafolio = [];
+// FUNCIÓN ASÍNCRONA
+// El cadenero de entrada recibe un texto.
+// El cadenero de salida promete entregar un número.
+var buscarPrecioCripto = function (simbolo) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        console.log("Buscando precio en tiempo real para ".concat(simbolo, "..."));
-        return [2 /*return*/, 150];
+        switch (_a.label) {
+            case 0:
+                // Simulamos una espera en internet
+                console.log("Buscando en la blockchain el precio de ".concat(simbolo, "..."));
+                return [4 /*yield*/, esperar(2000)];
+            case 1:
+                _a.sent();
+                return [2 /*return*/, 65000.50];
+        }
     });
 }); };
-// Llamamos a la función (recuerda que al ser asíncrona, en la vida real usaríamos 'await')
-obtenerPrecioMercado("AAPL").then(function (precio) { return console.log("El precio lleg\u00F3: $".concat(precio)); });
+// Instancias de nuestras interfaces u objetos
+var inversion = {
+    simbolo: "BTC",
+    precioActual: 500,
+    sector: "Cripto"
+};
+var cripto = {
+    precioActual: 50,
+    simbolo: "ETH",
+    red: "Ethereum"
+};
+portafolio.push(cripto);
+console.log(portafolio);
+// Aqui aparece explicitamente lo que estamos llamando (la promesa con el valor del return)
+console.log(buscarPrecioCripto(inversion.simbolo)); // Aparece en pending pues espera a la promesa
+// Aqui se llama al simbolo de nuestro objeto inversion como tal (BTC)
+buscarPrecioCripto(inversion.simbolo);
+// Con then esperamos la promesa e imprimimos el precio dentro de la función esperar
+buscarPrecioCripto(inversion.simbolo)
+    .then(function (precioFinal) {
+    console.log("El precio es: ".concat(precioFinal));
+});
